@@ -74,7 +74,7 @@ namespace Projet {
 			this->Personnel->TabIndex = 0;
 			this->Personnel->Text = L"Personnels";
 			this->Personnel->UseVisualStyleBackColor = true;
-			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::Personnel_Click);
 			// 
 			// Client
 			// 
@@ -84,7 +84,7 @@ namespace Projet {
 			this->Client->TabIndex = 1;
 			this->Client->Text = L"Clients";
 			this->Client->UseVisualStyleBackColor = true;
-			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			this->Client->Click += gcnew System::EventHandler(this, &MyForm::Client_Click);
 			// 
 			// Commande
 			// 
@@ -94,17 +94,17 @@ namespace Projet {
 			this->Commande->TabIndex = 2;
 			this->Commande->Text = L"Commandes";
 			this->Commande->UseVisualStyleBackColor = true;
-			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
+			this->Commande->Click += gcnew System::EventHandler(this, &MyForm::Commande_Click);
 			// 
 			// Stock
 			// 
 			this->Produit->Location = System::Drawing::Point(397, 370);
-			this->Produit->Name = L"Stocks";
+			this->Produit->Name = L"Produits";
 			this->Produit->Size = System::Drawing::Size(128, 76);
 			this->Produit->TabIndex = 3;
-			this->Produit->Text = L"Stocks";
+			this->Produit->Text = L"Produits";
 			this->Produit->UseVisualStyleBackColor = true;
-			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			this->Produit->Click += gcnew System::EventHandler(this, &MyForm::Produit_Click);
 			// 
 			// Stats
 			// 
@@ -114,7 +114,7 @@ namespace Projet {
 			this->Stats->TabIndex = 4;
 			this->Stats->Text = L"Statistiques";
 			this->Stats->UseVisualStyleBackColor = true;
-			this->Personnel->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+			this->Stats->Click += gcnew System::EventHandler(this, &MyForm::Stats_Click);
 			// 
 			// MyForm
 			// 
@@ -131,8 +131,9 @@ namespace Projet {
 			this->ResumeLayout(false);
 
 		}
+
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Personnel_Click(System::Object^ sender, System::EventArgs^ e) {
 		etatActuel = 1;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
 		mappage->SetEtatActuel(etatActuel);
@@ -140,7 +141,7 @@ namespace Projet {
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Client_Click(System::Object^ sender, System::EventArgs^ e) {
 		etatActuel = 2;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
 		mappage->SetEtatActuel(etatActuel);
@@ -148,17 +149,23 @@ namespace Projet {
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Commande_Click(System::Object^ sender, System::EventArgs^ e) {
 		etatActuel = 3;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
 		mappage->SetEtatActuel(etatActuel);
+
+		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
+		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Produit_Click(System::Object^ sender, System::EventArgs^ e) {
 		etatActuel = 4;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
 		mappage->SetEtatActuel(etatActuel);
+
+		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
+		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
-	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Stats_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 };
 }

@@ -14,7 +14,13 @@ System::Data::DataSet^ NS_Comp_Svc::Services::selectionnerDonnee(System::String^
 }
 void NS_Comp_Svc::Services::ajouterDonnee(System::String^ colonne, System::String^ valeur)
 {
+	System::String^ sql;
 
+	this->oMappTB->setColonne(colonne);
+	this->oMappTB->setValeur(valeur);
+
+	sql = this->oMappTB->Insert();
+	this->oCad->actionRows(sql);
 }
 
 void NS_Comp_Svc::Services::effacerDonnee(System::String^ colonne, System::String^ valeur)

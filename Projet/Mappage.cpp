@@ -19,7 +19,7 @@ System::String^ NS_Comp_Mappage::Mappage::Select(void)
 		return "SELECT * FROM [PRojet_POO].[dbo].[Commande];";
 	}
 	else if (this->etatActuel == 4) {
-		return "SELECT * FROM [PRojet_POO].[dbo].[Produit];";
+		return "SELECT * FROM [PRojet_POO].[dbo].[Produits];";
 	}
 }
 System::String^ NS_Comp_Mappage::Mappage::Insert(void)

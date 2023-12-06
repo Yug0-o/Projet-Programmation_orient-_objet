@@ -1,5 +1,6 @@
 #pragma once
 #include "Services.h"
+#include "Mappage.h"
 
 namespace Projet {
 
@@ -48,6 +49,11 @@ namespace Projet {
 
 	private: NS_Comp_Svc::Services^ oSvc;
 	private: System::Data::DataSet^ oDs;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
 	protected:
 
 	private:
@@ -72,6 +78,11 @@ namespace Projet {
 			this->txt_id = (gcnew System::Windows::Forms::TextBox());
 			this->txt_nom = (gcnew System::Windows::Forms::TextBox());
 			this->txt_prenom = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_enr))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -132,23 +143,71 @@ namespace Projet {
 			// 
 			// txt_nom
 			// 
-			this->txt_nom->Location = System::Drawing::Point(177, 209);
+			this->txt_nom->Location = System::Drawing::Point(177, 218);
 			this->txt_nom->Name = L"txt_nom";
 			this->txt_nom->Size = System::Drawing::Size(307, 20);
 			this->txt_nom->TabIndex = 6;
 			// 
 			// txt_prenom
 			// 
-			this->txt_prenom->Location = System::Drawing::Point(177, 238);
+			this->txt_prenom->Location = System::Drawing::Point(177, 292);
 			this->txt_prenom->Name = L"txt_prenom";
 			this->txt_prenom->Size = System::Drawing::Size(307, 20);
 			this->txt_prenom->TabIndex = 7;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(177, 255);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(307, 20);
+			this->textBox1->TabIndex = 8;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(174, 167);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(281, 13);
+			this->label1->TabIndex = 9;
+			this->label1->Text = L"Entrer le nom de la colonne que vous souhaitez manipuler";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(174, 206);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->TabIndex = 10;
+			this->label2->Text = L"Entrer la valeur que vous souhaitez manipuler";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(174, 241);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(35, 13);
+			this->label3->TabIndex = 11;
+			this->label3->Text = L"Entrer la colonne de la condition (uniquement pour UPDATE)";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(174, 278);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(35, 13);
+			this->label4->TabIndex = 12;
+			this->label4->Text = L"Entrer la valeur de la condition (uniquement pour UPDATE)";
 			// 
 			// MyFormGestion
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(506, 332);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->txt_prenom);
 			this->Controls->Add(this->txt_nom);
 			this->Controls->Add(this->txt_id);
@@ -163,6 +222,7 @@ namespace Projet {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_enr))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 #pragma endregion
 	private: System::Void btn_load_Click(System::Object^ sender, System::EventArgs^ e)
@@ -175,7 +235,7 @@ namespace Projet {
 	private: System::Void MyFormGestion_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->oSvc = gcnew NS_Comp_Svc::Services();
-		this->oSvc->setEtatActuel(1);
+		this->oSvc->setEtatActuel(3);
 	}
 	private: System::Void btn_insert_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -189,5 +249,5 @@ namespace Projet {
 	{
 		return;
 	}
-	};
+};
 }
