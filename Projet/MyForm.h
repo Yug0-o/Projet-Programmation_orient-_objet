@@ -49,7 +49,6 @@ namespace Projet {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		int etatActuel;
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -134,33 +133,29 @@ namespace Projet {
 
 #pragma endregion
 	private: System::Void Personnel_Click(System::Object^ sender, System::EventArgs^ e) {
-		etatActuel = 1;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
-		mappage->SetEtatActuel(etatActuel);
+		mappage->SetEtatActuel(1);
 
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
 	private: System::Void Client_Click(System::Object^ sender, System::EventArgs^ e) {
-		etatActuel = 2;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
-		mappage->SetEtatActuel(etatActuel);
+		mappage->SetEtatActuel(2);
 
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
 	private: System::Void Commande_Click(System::Object^ sender, System::EventArgs^ e) {
-		etatActuel = 3;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
-		mappage->SetEtatActuel(etatActuel);
+		mappage->SetEtatActuel(3);
 
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
 	private: System::Void Produit_Click(System::Object^ sender, System::EventArgs^ e) {
-		etatActuel = 4;
 		NS_Comp_Mappage::Mappage^ mappage = gcnew NS_Comp_Mappage::Mappage();
-		mappage->SetEtatActuel(etatActuel);
+		mappage->SetEtatActuel(4);
 
 		MyFormGestion^ gestionForm = gcnew MyFormGestion(); // Création d'une instance de MyFormGestion
 		gestionForm->Show(); // Affichage du nouveau formulaire

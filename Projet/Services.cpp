@@ -25,10 +25,24 @@ void NS_Comp_Svc::Services::ajouterDonnee(System::String^ colonne, System::Strin
 
 void NS_Comp_Svc::Services::effacerDonnee(System::String^ colonne, System::String^ valeur)
 {
+	System::String^ sql;
 
+	this->oMappTB->setColonne(colonne);
+	this->oMappTB->setValeur(valeur);
+
+	sql = this->oMappTB->Delete();
+	this->oCad->actionRows(sql);
 }
 
 void NS_Comp_Svc::Services::updateDonnee(System::String^ colonne, System::String^ valeur, System::String^ conditionColonne, System::String^ conditionValeur)
 {
-	
+	System::String^ sql;
+
+	this->oMappTB->setColonne(colonne);
+	this->oMappTB->setValeur(valeur);
+	this->oMappTB->setConditionColonne(conditionColonne);
+	this->oMappTB->setConditionValeur(conditionValeur);
+
+	sql = this->oMappTB->Update();
+	this->oCad->actionRows(sql);
 }

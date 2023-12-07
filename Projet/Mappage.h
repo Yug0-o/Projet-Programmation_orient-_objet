@@ -12,12 +12,16 @@ namespace NS_Comp_Mappage
 		System::String^ conditionColonne;
 		System::String^ conditionValeur;
 
-		int etatActuel;
+		static int etatActuel = 0;
 	public:
 		System::String^ Select(void);
 		System::String^ Insert(void);
 		System::String^ Delete(void);
 		System::String^ Update(void);
+		static int GetEtatActuel()
+		{
+			return etatActuel;
+		}
 		void SetEtatActuel(int etat);
 		void NS_Comp_Mappage::Mappage::setColonne(System::String^ colonne)
 		{

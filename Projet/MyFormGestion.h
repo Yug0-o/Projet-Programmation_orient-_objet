@@ -43,13 +43,13 @@ namespace Projet {
 	private: System::Windows::Forms::Button^ btn_insert;
 	private: System::Windows::Forms::Button^ btn_delete;
 	private: System::Windows::Forms::Button^ btn_update;
-	private: System::Windows::Forms::TextBox^ txt_id;
-	private: System::Windows::Forms::TextBox^ txt_nom;
-	private: System::Windows::Forms::TextBox^ txt_prenom;
+	private: System::Windows::Forms::TextBox^ txt_colonne;
+	private: System::Windows::Forms::TextBox^ txt_valeur;
+	private: System::Windows::Forms::TextBox^ txt_conditionColonne;
 
 	private: NS_Comp_Svc::Services^ oSvc;
 	private: System::Data::DataSet^ oDs;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ txt_conditionValeur;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
@@ -75,10 +75,10 @@ namespace Projet {
 			this->btn_insert = (gcnew System::Windows::Forms::Button());
 			this->btn_delete = (gcnew System::Windows::Forms::Button());
 			this->btn_update = (gcnew System::Windows::Forms::Button());
-			this->txt_id = (gcnew System::Windows::Forms::TextBox());
-			this->txt_nom = (gcnew System::Windows::Forms::TextBox());
-			this->txt_prenom = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->txt_colonne = (gcnew System::Windows::Forms::TextBox());
+			this->txt_valeur = (gcnew System::Windows::Forms::TextBox());
+			this->txt_conditionColonne = (gcnew System::Windows::Forms::TextBox());
+			this->txt_conditionValeur = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -134,33 +134,33 @@ namespace Projet {
 			this->btn_update->UseVisualStyleBackColor = true;
 			this->btn_update->Click += gcnew System::EventHandler(this, &MyFormGestion::btn_update_Click);
 			// 
-			// txt_id
+			// txt_colonne
 			// 
-			this->txt_id->Location = System::Drawing::Point(177, 183);
-			this->txt_id->Name = L"txt_id";
-			this->txt_id->Size = System::Drawing::Size(307, 20);
-			this->txt_id->TabIndex = 5;
+			this->txt_colonne->Location = System::Drawing::Point(177, 183);
+			this->txt_colonne->Name = L"txt_colonne";
+			this->txt_colonne->Size = System::Drawing::Size(307, 20);
+			this->txt_colonne->TabIndex = 5;
 			// 
-			// txt_nom
+			// txt_valeur
 			// 
-			this->txt_nom->Location = System::Drawing::Point(177, 218);
-			this->txt_nom->Name = L"txt_nom";
-			this->txt_nom->Size = System::Drawing::Size(307, 20);
-			this->txt_nom->TabIndex = 6;
+			this->txt_valeur->Location = System::Drawing::Point(177, 218);
+			this->txt_valeur->Name = L"txt_valeur";
+			this->txt_valeur->Size = System::Drawing::Size(307, 20);
+			this->txt_valeur->TabIndex = 6;
 			// 
-			// txt_prenom
+			// txt_conditionColonne
 			// 
-			this->txt_prenom->Location = System::Drawing::Point(177, 292);
-			this->txt_prenom->Name = L"txt_prenom";
-			this->txt_prenom->Size = System::Drawing::Size(307, 20);
-			this->txt_prenom->TabIndex = 7;
+			this->txt_conditionColonne->Location = System::Drawing::Point(177, 255);
+			this->txt_conditionColonne->Name = L"txt_conditionColonne";
+			this->txt_conditionColonne->Size = System::Drawing::Size(307, 20);
+			this->txt_conditionColonne->TabIndex = 7;
 			// 
-			// textBox1
+			// txt_conditionValeur
 			// 
-			this->textBox1->Location = System::Drawing::Point(177, 255);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(307, 20);
-			this->textBox1->TabIndex = 8;
+			this->txt_conditionValeur->Location = System::Drawing::Point(177, 292);
+			this->txt_conditionValeur->Name = L"txt_conditionValeur";
+			this->txt_conditionValeur->Size = System::Drawing::Size(307, 20);
+			this->txt_conditionValeur->TabIndex = 8;
 			// 
 			// label1
 			// 
@@ -207,10 +207,10 @@ namespace Projet {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->txt_prenom);
-			this->Controls->Add(this->txt_nom);
-			this->Controls->Add(this->txt_id);
+			this->Controls->Add(this->txt_conditionValeur);
+			this->Controls->Add(this->txt_conditionColonne);
+			this->Controls->Add(this->txt_valeur);
+			this->Controls->Add(this->txt_colonne);
 			this->Controls->Add(this->btn_update);
 			this->Controls->Add(this->btn_delete);
 			this->Controls->Add(this->btn_insert);
@@ -235,19 +235,20 @@ namespace Projet {
 	private: System::Void MyFormGestion_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->oSvc = gcnew NS_Comp_Svc::Services();
-		this->oSvc->setEtatActuel(3);
+		NS_Comp_Mappage::Mappage^ mappageInstance = gcnew NS_Comp_Mappage::Mappage();
+		this->oSvc->setEtatActuel(mappageInstance->GetEtatActuel());
 	}
 	private: System::Void btn_insert_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		return;
+		this->oSvc->ajouterDonnee(this->txt_colonne->Text, this->txt_valeur->Text);
 	}
 	private: System::Void btn_delete_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		return;
+		this->oSvc->effacerDonnee(this->txt_colonne->Text, this->txt_valeur->Text);
 	}
 	private: System::Void btn_update_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		return;
+		this->oSvc->updateDonnee(this->txt_colonne->Text, this->txt_valeur->Text, this->txt_conditionColonne->Text, this->txt_conditionValeur->Text);
 	}
 };
 }
