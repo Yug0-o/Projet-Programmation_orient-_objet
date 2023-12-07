@@ -25,16 +25,16 @@ System::String^ NS_Comp_Mappage::Mappage::Select(void)
 System::String^ NS_Comp_Mappage::Mappage::Insert(void)
 {
 	if (this->etatActuel == 1) {
-		return "INSERT INTO Personnel(" + this->colonne + ") VALUES('" + this->valeur + "');";
+		return "INSERT INTO Personnel(" + this->colonne + ") VALUES(" + this->valeur + ");";
 	}
 	else if (this->etatActuel == 2) {
-		return "INSERT INTO Client(" + this->colonne + ") VALUES('" + this->valeur + "');";
+		return "INSERT INTO Client(" + this->colonne + ") VALUES(" + this->valeur + ");";
 	}
 	else if (this->etatActuel == 3) {
-		return "INSERT INTO Commande(" + this->colonne + ") VALUES('" + this->valeur + "');";
+		return "INSERT INTO Commande(" + this->colonne + ") VALUES(" + this->valeur + ");";
 	}
 	else if (this->etatActuel == 4) {
-		return "INSERT INTO Produit(" + this->colonne + ") VALUES('" + this->valeur + "');";
+		return "INSERT INTO Produit(" + this->colonne + ") VALUES(" + this->valeur + ");";
 	}
 }
 
