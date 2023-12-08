@@ -113,8 +113,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Client.h" />
-    <ClInclude Include="Commande.h" />
     <ClInclude Include="Conception.h" />
     <ClInclude Include="Mappage.h" />
     <ClInclude Include="MyForm.h">
@@ -126,24 +124,16 @@
     <ClInclude Include="MyFormStats.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Personnel.h" />
     <ClInclude Include="Services.h" />
-    <ClInclude Include="Statistiques.h" />
-    <ClInclude Include="Stock.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp" />
-    <ClCompile Include="Commande.cpp" />
     <ClCompile Include="Conception.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mappage.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyFormGestion.cpp" />
     <ClCompile Include="MyFormStats.cpp" />
-    <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="Services.cpp" />
-    <ClCompile Include="Statistiques.cpp" />
-    <ClCompile Include="Stock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -158,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyFormGestion.resx">
       <DependentUpon>MyFormGestion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyFormStats.resx">
+      <DependentUpon>MyFormStats.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

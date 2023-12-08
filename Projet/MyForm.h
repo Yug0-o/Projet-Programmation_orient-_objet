@@ -1,5 +1,6 @@
 #pragma once
 #include "MyFormGestion.h"
+#include "MyFormStats.h"
 #include "Mappage.h"
 #include "Services.h"
 
@@ -161,6 +162,8 @@ namespace Projet {
 		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
 	private: System::Void Stats_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyFormStats^ gestionForm = gcnew MyFormStats(); // Création d'une instance de MyFormGestion
+		gestionForm->Show(); // Affichage du nouveau formulaire
 	}
 };
 }

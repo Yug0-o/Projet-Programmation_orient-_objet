@@ -69,3 +69,33 @@ System::String^ NS_Comp_Mappage::Mappage::Update(void)
 	}
 }
 
+
+
+System::String^ NS_Comp_Mappage::Mappage::panier(void) {
+	return "SELECT ROUND(AVG(Commande.total_ttc),2) as Panier_Moyen FROM Commande;";
+};
+System::String^ NS_Comp_Mappage::Mappage::affaires(void) {
+	return "SELECT SUM(Commande.total_ttc) AS Chiffre_daffaires FROM Commande WHERE Commande.date_emission BETWEEN" + this->date_debut + "AND" + this->date_fin + ";";
+};
+System::String^ NS_Comp_Mappage::Mappage::seuil(void) {
+	return "SELECT * FROM Produit WHERE Produit.quantite <= Produit.seuil_reappro; ";
+};
+System::String^ NS_Comp_Mappage::Mappage::montant(void) {
+	return "SELECT Client.nom_client AS 'Nom', Client.prenom_client AS 'Prenom', SUM(Commande.total_ttc) AS 'Total TTC' FROM Client LEFT JOIN Commande ON Commande.id_client = Client.id_client GROUP BY Client.id_client, Client.nom_client, Client.prenom_client; ";
+};
+System::String^ NS_Comp_Mappage::Mappage::plus(void) {
+	return "SELECT TOP (" + this->nombre +") Produit.id_produit AS 'ID_Produit', Produit.nom_produit AS 'Nom', Produit.ref_produit AS 'Ref', COALESCE(SUM(Commande.quantite_article), 0) AS Quantite_vendu FROM Commande RIGHT JOIN appartenir ON appartenir.id_commande = Commande.id_commande RIGHT JOIN Produit ON Produit.id_produit = appartenir.id_produit WHERE Commande.date_emission BETWEEN" + this->date_debut + "AND" + this->date_fin + "GROUP BY Produit.id_produit, Produit.nom_produit, Produit.ref_produit ORDER BY DESC; ";
+};
+System::String^ NS_Comp_Mappage::Mappage::moins(void) {
+	return "SELECT TOP (" + this->nombre +") Produit.id_produit AS 'ID_Produit', Produit.nom_produit AS 'Nom', Produit.ref_produit AS 'Ref', COALESCE(SUM(Commande.quantite_article), 0) AS Quantite_vendu FROM Commande RIGHT JOIN appartenir ON appartenir.id_commande = Commande.id_commande RIGHT JOIN Produit ON Produit.id_produit = appartenir.id_produit WHERE Commande.date_emission BETWEEN " + this->date_debut + "AND" + this->date_fin + "GROUP BY Produit.id_produit, Produit.nom_produit, Produit.ref_produit ORDER BY ASC; ";
+};
+System::String^ NS_Comp_Mappage::Mappage::commerciale(void) {
+	return "";
+};
+System::String^ NS_Comp_Mappage::Mappage::achat(void) {
+	return "";
+};
+System::String^ NS_Comp_Mappage::Mappage::simu(void) {
+	return "";
+};
+

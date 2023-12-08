@@ -46,3 +46,80 @@ void NS_Comp_Svc::Services::updateDonnee(System::String^ colonne, System::String
 	sql = this->oMappTB->Update();
 	this->oCad->actionRows(sql);
 }
+
+System::Data::DataSet^ NS_Comp_Svc::Services::panier_moyen(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->panier();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::chiffre_affaires(System::String^ annee, System::String^ mois, System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	this->oMappTB->setAnnee(annee);
+	this->oMappTB->setMois(mois);
+
+	sql = this->oMappTB->affaires();
+	return this->oCad->getRows(sql, dataTableName);
+}
+
+System::Data::DataSet^ NS_Comp_Svc::Services::produit_reappro(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->seuil();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::montant_total(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->montant();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::plus_vendus(System::String^ nombre, System::String^ date_debut, System::String^ date_fin, System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	this->oMappTB->setNombre(nombre);
+	this->oMappTB->setDebut(date_debut);
+	this->oMappTB->setFin(date_fin);
+
+	sql = this->oMappTB->plus();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::moins_vendus(System::String^ nombre, System::String^ date_debut, System::String^ date_fin, System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	this->oMappTB->setNombre(nombre);
+	this->oMappTB->setDebut(date_debut);
+	this->oMappTB->setFin(date_fin);
+
+	sql = this->oMappTB->moins();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::valeur_commer(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->commerciale();
+	return this->oCad->getRows(sql, dataTableName);
+}
+System::Data::DataSet^ NS_Comp_Svc::Services::valeur_achat(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->achat();
+	return this->oCad->getRows(sql, dataTableName);
+}
+
+System::Data::DataSet^ NS_Comp_Svc::Services::simulation(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->simu();
+	return this->oCad->getRows(sql, dataTableName);
+}
