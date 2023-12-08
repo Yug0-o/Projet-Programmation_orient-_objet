@@ -72,22 +72,22 @@ System::String^ NS_Comp_Mappage::Mappage::Update(void)
 
 
 System::String^ NS_Comp_Mappage::Mappage::panier(void) {
-	return "SELECT ROUND(AVG(Commande.total_ttc),2) as Panier_Moyen FROM Commande;";
+	return "EXEC PanierMoyen;";
 };
 System::String^ NS_Comp_Mappage::Mappage::affaires(void) {
-	return "SELECT SUM(Commande.total_ttc) AS Chiffre_daffaires FROM Commande WHERE Commande.date_emission BETWEEN" + this->date_debut + "AND" + this->date_fin + ";";
+	return "EXEC CAMois @Annee = "+ this->annee +", @Mois = "+ this->mois +"; ";
 };
 System::String^ NS_Comp_Mappage::Mappage::seuil(void) {
-	return "SELECT * FROM Produit WHERE Produit.quantite <= Produit.seuil_reappro; ";
+	return "EXEC ProduitReappro;";
 };
 System::String^ NS_Comp_Mappage::Mappage::montant(void) {
-	return "SELECT Client.nom_client AS 'Nom', Client.prenom_client AS 'Prenom', SUM(Commande.total_ttc) AS 'Total TTC' FROM Client LEFT JOIN Commande ON Commande.id_client = Client.id_client GROUP BY Client.id_client, Client.nom_client, Client.prenom_client; ";
+	return "EXEC TotalAchatClient;";
 };
 System::String^ NS_Comp_Mappage::Mappage::plus(void) {
-	return "SELECT TOP (" + this->nombre +") Produit.id_produit AS 'ID_Produit', Produit.nom_produit AS 'Nom', Produit.ref_produit AS 'Ref', COALESCE(SUM(Commande.quantite_article), 0) AS Quantite_vendu FROM Commande RIGHT JOIN appartenir ON appartenir.id_commande = Commande.id_commande RIGHT JOIN Produit ON Produit.id_produit = appartenir.id_produit WHERE Commande.date_emission BETWEEN" + this->date_debut + "AND" + this->date_fin + "GROUP BY Produit.id_produit, Produit.nom_produit, Produit.ref_produit ORDER BY DESC; ";
+	return "EXEC TopVente @Nb = "+ this->nombre +", @Ordre = 1, @DateDebut = '" + this->date_debut + "', @DateFin = '" + this->date_fin + "'; ";
 };
 System::String^ NS_Comp_Mappage::Mappage::moins(void) {
-	return "SELECT TOP (" + this->nombre +") Produit.id_produit AS 'ID_Produit', Produit.nom_produit AS 'Nom', Produit.ref_produit AS 'Ref', COALESCE(SUM(Commande.quantite_article), 0) AS Quantite_vendu FROM Commande RIGHT JOIN appartenir ON appartenir.id_commande = Commande.id_commande RIGHT JOIN Produit ON Produit.id_produit = appartenir.id_produit WHERE Commande.date_emission BETWEEN " + this->date_debut + "AND" + this->date_fin + "GROUP BY Produit.id_produit, Produit.nom_produit, Produit.ref_produit ORDER BY ASC; ";
+	return "EXEC TopVente @Nb = " + this->nombre + ", @Ordre = 0, @DateDebut = '" + this->date_debut + "', @DateFin = '" + this->date_fin + "'; ";
 };
 System::String^ NS_Comp_Mappage::Mappage::commerciale(void) {
 	return "";

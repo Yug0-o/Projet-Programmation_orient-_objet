@@ -54,7 +54,7 @@ System::Data::DataSet^ NS_Comp_Svc::Services::panier_moyen(System::String^ dataT
 	sql = this->oMappTB->panier();
 	return this->oCad->getRows(sql, dataTableName);
 }
-System::Data::DataSet^ NS_Comp_Svc::Services::chiffre_affaires(System::String^ annee, System::String^ mois, System::String^ dataTableName)
+System::Data::DataSet^ NS_Comp_Svc::Services::chiffre_affaires(System::String^ dataTableName, System::String^ annee, System::String^ mois)
 {
 	System::String^ sql;
 
@@ -79,7 +79,7 @@ System::Data::DataSet^ NS_Comp_Svc::Services::montant_total(System::String^ data
 	sql = this->oMappTB->montant();
 	return this->oCad->getRows(sql, dataTableName);
 }
-System::Data::DataSet^ NS_Comp_Svc::Services::plus_vendus(System::String^ nombre, System::String^ date_debut, System::String^ date_fin, System::String^ dataTableName)
+System::Data::DataSet^ NS_Comp_Svc::Services::plus_vendus(System::String^ dataTableName, System::String^ nombre, System::String^ date_debut, System::String^ date_fin)
 {
 	System::String^ sql;
 
@@ -90,7 +90,7 @@ System::Data::DataSet^ NS_Comp_Svc::Services::plus_vendus(System::String^ nombre
 	sql = this->oMappTB->plus();
 	return this->oCad->getRows(sql, dataTableName);
 }
-System::Data::DataSet^ NS_Comp_Svc::Services::moins_vendus(System::String^ nombre, System::String^ date_debut, System::String^ date_fin, System::String^ dataTableName)
+System::Data::DataSet^ NS_Comp_Svc::Services::moins_vendus(System::String^ dataTableName, System::String^ nombre, System::String^ date_debut, System::String^ date_fin)
 {
 	System::String^ sql;
 
