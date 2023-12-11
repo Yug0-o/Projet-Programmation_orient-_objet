@@ -41,31 +41,31 @@ System::String^ NS_Comp_Mappage::Mappage::Insert(void)
 System::String^ NS_Comp_Mappage::Mappage::Delete(void)
 {
 	if (this->etatActuel == 1) {
-		return "DELETE FROM Personnel WHERE " + this->colonne +" = '" + this->valeur +"'; ";
+		return "DELETE FROM Personnel WHERE " + this->colonne +" = " + this->valeur +"; ";
 	}
 	else if (this->etatActuel == 2) {
-		return "DELETE FROM Client WHERE " + this->colonne + " = '" + this->valeur + "'; ";
+		return "DELETE FROM Client WHERE " + this->colonne + " = " + this->valeur + "; ";
 	}
 	else if (this->etatActuel == 3) {
-		return "DELETE FROM Commande WHERE " + this->colonne + " = '" + this->valeur + "'; ";
+		return "DELETE FROM Commande WHERE " + this->colonne + " = " + this->valeur + "; ";
 	}
 	else if (this->etatActuel == 4) {
-		return "DELETE FROM Produit WHERE " + this->colonne + " = '" + this->valeur + "'; ";
+		return "DELETE FROM Produit WHERE " + this->colonne + " = " + this->valeur + "; ";
 	}
 }
 System::String^ NS_Comp_Mappage::Mappage::Update(void)
 {
 	if (this->etatActuel == 1) {
-		return "UPDATE Personnel SET " + this->colonne + " = '" + this->valeur + "' WHERE " + this->conditionColonne + " = '" + this->conditionValeur + "';";
+		return "UPDATE Personnel SET " + this->colonne + " = " + this->valeur + " WHERE " + this->conditionColonne + " = " + this->conditionValeur + ";";
 	}
 	else if (this->etatActuel == 2) {
-		return "UPDATE Client SET " + this->colonne + " = '" + this->valeur + "' WHERE " + this->conditionColonne + " = '" + this->conditionValeur + "';";
+		return "UPDATE Client SET " + this->colonne + " = " + this->valeur + "' WHERE " + this->conditionColonne + " = " + this->conditionValeur + ";";
 	}
 	else if (this->etatActuel == 3) {
-		return "UPDATE Commande SET " + this->colonne + " = '" + this->valeur + "' WHERE " + this->conditionColonne + " = '" + this->conditionValeur + "';";
+		return "UPDATE Commande SET " + this->colonne + " = " + this->valeur + " WHERE " + this->conditionColonne + " = " + this->conditionValeur + ";";
 	}
 	else if (this->etatActuel == 4) {
-		return "UPDATE Produit SET " + this->colonne + " = '" + this->valeur + "' WHERE " + this->conditionColonne + " = '" + this->conditionValeur + "';";
+		return "UPDATE Produit SET " + this->colonne + " = " + this->valeur + " WHERE " + this->conditionColonne + " = " + this->conditionValeur + ";";
 	}
 }
 
@@ -90,10 +90,10 @@ System::String^ NS_Comp_Mappage::Mappage::moins(void) {
 	return "EXEC TopVente @Nb = " + this->nombre + ", @Ordre = 0, @DateDebut = '" + this->date_debut + "', @DateFin = '" + this->date_fin + "'; ";
 };
 System::String^ NS_Comp_Mappage::Mappage::commerciale(void) {
-	return "";
+	return "EXEC ValeurCommercialeStock;";
 };
 System::String^ NS_Comp_Mappage::Mappage::achat(void) {
-	return "";
+	return "EXEC ValeurAchatStock;";
 };
 System::String^ NS_Comp_Mappage::Mappage::simu(void) {
 	return "";

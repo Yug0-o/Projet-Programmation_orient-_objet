@@ -1,3 +1,5 @@
+#include <iostream>
+#include <msclr/marshal_cppstd.h> // Inclusion pour marshal_as
 #include "Conception.h"
 #include "Mappage.h"
 #include "Services.h"
